@@ -5,25 +5,37 @@
 /* Font size */
 $font-large: 48px;
 $font-medium: 28px;
-$font-regular: 16px;
+$font-regular: 18px;
 $font-small: 14px;
 $font-micro: 12px;
 
+/* Font weight */
+// $weight-bold: 700;
+$weight-semi: 600;
+$weight-regular: 400;
+
 /* Size */
 $size-largeSpace: 48px;
-$size-mediumSpace: 26px;
-$size-basicSpace: 16px;
+$size-mediumSpace: 28px;
+$size-basicSpace: 18px;
 $size-smallSpace: 6px;
 $size-microSpace: 4px;
 
+/* Universal Tags */
+a {
+  text-decoration: none;
+}
+
 /* News Feed */
 .newsFeed {
-  padding: $size-mediumSpace;
+  padding: $size-basicSpace;
   &__title {
     font-size: $font-large;
+    font-weight: $weight-semi;
     margin-bottom: $size-largeSpace;
   }
   &__navigator {
+    font-size: $font-medium;
     margin-bottom: $size-basicSpace;
     &__prev {
     }
