@@ -1,0 +1,11 @@
+# Bundler
+/.parcel-cache
+
+# Target
+/dist
+
+# Dependencies
+/node_modules
+
+# Pruduction
+/build
