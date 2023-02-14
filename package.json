@@ -1,0 +1,8 @@
+{
+  "name": "hacker_news",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Downey9204/HackerNews.git",
+  "author": "나다운 <devops9204@gmail.com>",
+  "license": "MIT"
+}
