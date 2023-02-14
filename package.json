@@ -5,6 +5,9 @@
   "repository": "https://github.com/Downey9204/HackerNews.git",
   "author": "나다운 <devops9204@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "reset-css": "^5.0.1"
+  },
   "devDependencies": {
     "handlebars": "^4.7.7",
     "parcel": "^2.8.3"
