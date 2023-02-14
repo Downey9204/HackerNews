@@ -1,4 +1,5 @@
 import ajax from "./http";
+import handleBars from "handlebars";
 
 const NEWS_URL = "https://api.hnpwa.com/v0/news/@page.json";
 const CONTENT_URL = "https://api.hnpwa.com/v0/item/@id.json";
@@ -34,54 +35,49 @@ function setRoutes() {
 function createFeed() {
   const page = store.currentPage;
   const newsFeed = ajax("GET", NEWS_URL.replace("@page", page), false);
-  let template = `
+  const template = handleBars.compile(`
     <section>
       <h1>News Feed</h1>
       <ul>
-        {{__news_feed__}}
+        {{#each newsFeed}}
+        <li>
+          <a href="#/detail/{{id}}">
+            {{title}}
+          </a>
+        </li>
+        {{/each}}
       </ul>
       <div>
         <span>
-          <a href="#/page/{{__prev_page__}}">To Prev</a>
-          <a href="#/page/{{__next_page__}}">To Next</a>
+          <a href="#/page/{{prevPage}}">To Prev</a>
+          <a href="#/page/{{nextPage}}">To Next</a>
         </span>
       </div>
     </section>
-  `;
+  `);
+  const data = {
+    newsFeed,
+    prevPage: store.currentPage > 1 ? store.currentPage - 1 : 1,
+    nextPage: newsFeed.length ? store.currentPage + 1 : store.currentPage,
+  };
 
-  const newsList = [];
-  for (let i = 0; i < newsFeed.length; i++) {
-    newsList.push(`
-      <li>
-        <a href="#/detail/${newsFeed[i].id}">
-          ${newsFeed[i].title}
-        </a>
-      </li>
-    `);
-  }
-
-  const prev = store.currentPage > 1 ? store.currentPage - 1 : 1;
-  const next = newsList.length ? store.currentPage + 1 : store.currentPage;
-  template = template.replace("{{__news_feed__}}", newsList.join(""));
-  template = template.replace("{{__prev_page__}}", prev);
-  template = template.replace("{{__next_page__}}", next);
-
-  app.innerHTML = template;
+  app.innerHTML = template(data);
 }
 
 /** Create News Content */
 function createContent() {
   const id = location.hash.substring(9);
   const newsContent = ajax("GET", CONTENT_URL.replace("@id", id), false);
-  let template = `
+  const template = handleBars.compile(`
     <section>
-      <h1>{{__content_title__}}</h1>
-      <a href="#/page/{{__current_page__}}">To List</a>
+      <h1>{{newsContent.title}}</h1>
+      <a href="#/page/{{currentPage}}">To List</a>
     </section>
-  `;
+  `);
+  const data = {
+    newsContent,
+    currentPage: store.currentPage,
+  };
 
-  template = template.replace("{{__content_title__}}", newsContent.title);
-  template = template.replace("{{__current_page__}}", store.currentPage);
-
-  app.innerHTML = template;
+  app.innerHTML = template(data);
 }
