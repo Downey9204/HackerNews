@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "handlebars": "^4.7.7",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "sass": "^1.58.1"
   },
   "scripts": {
     "dev": "parcel --no-source-maps index.html"
