@@ -5,6 +5,7 @@ const NEWS_URL = "https://api.hnpwa.com/v0/news/@page.json";
 const CONTENT_URL = "https://api.hnpwa.com/v0/item/@id.json";
 
 const app = document.querySelector("#root");
+console.log(location.hash);
 const store = {
   currentPage: 1,
 };
@@ -14,7 +15,7 @@ window.addEventListener("hashchange", setRoutes);
 
 /** Init */
 function init() {
-  createFeed();
+  setRoutes();
 }
 
 /** Set Router */
@@ -36,23 +37,25 @@ function createFeed() {
   const page = store.currentPage;
   const newsFeed = ajax("GET", NEWS_URL.replace("@page", page), false);
   const template = handleBars.compile(`
-    <section>
-      <h1>News Feed</h1>
-      <ul>
+    <section class="newsFeed">
+      <h1 class="newsFeed__title">News Feed</h1>
+      <div class="newsFeed__navigator">
+        <span class="newsFeed__navigator__prev">
+          <a href="#/page/{{prevPage}}">To Prev</a>
+        </span>
+        <span class="newsFeed__navigator__next">
+          <a href="#/page/{{nextPage}}">To Next</a>
+        </span>
+      </div>
+      <ul class="newsFeed__list">
         {{#each newsFeed}}
-        <li>
+        <li class="newsFeed__list__item">
           <a href="#/detail/{{id}}">
             {{title}}
           </a>
         </li>
         {{/each}}
       </ul>
-      <div>
-        <span>
-          <a href="#/page/{{prevPage}}">To Prev</a>
-          <a href="#/page/{{nextPage}}">To Next</a>
-        </span>
-      </div>
     </section>
   `);
   const data = {

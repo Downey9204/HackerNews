@@ -9,6 +9,7 @@
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "2.8.3",
     "handlebars": "^4.7.7",
     "parcel": "^2.8.3",
     "sass": "^1.58.1"

@@ -1,0 +1,38 @@
+@import "reset-css";
+
+/* Global Variable */
+
+/* Font size */
+$font-large: 48px;
+$font-medium: 28px;
+$font-regular: 16px;
+$font-small: 14px;
+$font-micro: 12px;
+
+/* Size */
+$size-largeSpace: 48px;
+$size-mediumSpace: 26px;
+$size-basicSpace: 16px;
+$size-smallSpace: 6px;
+$size-microSpace: 4px;
+
+/* News Feed */
+.newsFeed {
+  padding: $size-mediumSpace;
+  &__title {
+    font-size: $font-large;
+    margin-bottom: $size-largeSpace;
+  }
+  &__navigator {
+    margin-bottom: $size-basicSpace;
+    &__prev {
+    }
+    &__next {
+    }
+  }
+  &__list {
+    &__item {
+      margin-bottom: $size-smallSpace;
+    }
+  }
+}
