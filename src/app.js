@@ -72,9 +72,11 @@ function createContent() {
   const id = location.hash.substring(9);
   const newsContent = ajax("GET", CONTENT_URL.replace("@id", id), false);
   const template = handleBars.compile(`
-    <section>
-      <h1>{{newsContent.title}}</h1>
-      <a href="#/page/{{currentPage}}">To List</a>
+    <section class="newsContent">
+      <h1 class="newsContent__title">{{newsContent.title}}</h1>
+      <div class="newsContent__toList">
+        <a href="#/page/{{currentPage}}">To List</a>
+      </div>
     </section>
   `);
   const data = {
