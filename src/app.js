@@ -1,25 +1,37 @@
 import ajax from "./http";
 import handleBars from "handlebars";
+import { Spinner } from "spin.js";
 
 const NEWS_URL = "https://api.hnpwa.com/v0/news/@page.json";
 const CONTENT_URL = "https://api.hnpwa.com/v0/item/@id.json";
 
 const app = document.querySelector("#root");
-console.log(location.hash);
+const spinContainer = document.createElement("div");
+spinContainer.setAttribute("class", "spinContainer");
+new Spinner().spin(spinContainer);
 const store = {
   currentPage: 1,
 };
 
 window.addEventListener("load", init);
 window.addEventListener("hashchange", setRoutes);
+// window.addEventListener("beforeunload", setLoading);
 
 /** Init */
 function init() {
   setRoutes();
 }
 
+function setLoading(isLoading) {
+  if (isLoading) {
+    console.log(spinContainer);
+    document.querySelector("body").appendChild(spinContainer);
+  } else document.querySelector("body").removeChild(spinContainer);
+}
+
 /** Set Router */
 function setRoutes() {
+  setLoading(true);
   const path = location.hash;
 
   if (path === "") {
@@ -30,6 +42,8 @@ function setRoutes() {
     store.currentPage = Number(path.substring(7));
     createFeed();
   } else console.log("404 Error");
+
+  setLoading(false);
 }
 
 /** Create News Feed */

@@ -6,12 +6,15 @@
   "author": "나다운 <devops9204@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "reset-css": "^5.0.1"
+    "reset-css": "^5.0.1",
+    "spin.js": "^4.1.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "2.8.3",
+    "assert": "^2.0.0",
     "handlebars": "^4.7.7",
     "parcel": "^2.8.3",
+    "process": "^0.11.10",
     "sass": "^1.58.1"
   },
   "scripts": {

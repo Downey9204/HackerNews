@@ -31,6 +31,16 @@ a {
   text-decoration: none;
 }
 
+/* Loading Spinner */
+.spinContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+}
+
 /* News Feed */
 .newsFeed {
   padding: $size-mediumSpace;
