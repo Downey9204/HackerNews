@@ -1,10 +1,6 @@
-import ajax from "../src/http";
+import http from "../src/http";
 console.log("newsFeed");
 
-const getNewsFeed = async () => {
-  const response = await ajax("news/1.json");
-
-  return response;
-};
+const getNewsFeed = () => http("news/1.json");
 
 export default getNewsFeed;

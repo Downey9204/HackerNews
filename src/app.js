@@ -1,7 +1,9 @@
-import newsFeed from "../services/newsFeed";
+import getNewsFeed from "../services/newsFeed";
 console.log("App");
 
 (async () => {
-  const a = await newsFeed();
-  console.log(a);
-})();
+  const res = await getNewsFeed();
+  const feed = res.data;
+
+  console.log("feed", feed);
+})().finally(() => console.log("isLoading", false));
