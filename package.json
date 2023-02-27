@@ -6,6 +6,7 @@
   "author": "나다운 <devops9204@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "buffer": "^5.5.0",
     "parcel": "^2.8.3"
   },
   "dependencies": {
